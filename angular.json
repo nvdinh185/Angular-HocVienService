@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "bai8httpservice": {
+    "Bai2ngFor": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/bai8httpservice",
+            "outputPath": "dist/Bai2ngFor",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -57,18 +57,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bai8httpservice:build"
+            "browserTarget": "Bai2ngFor:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "bai8httpservice:build:production"
+              "browserTarget": "Bai2ngFor:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bai8httpservice:build"
+            "browserTarget": "Bai2ngFor:build"
           }
         },
         "test": {
@@ -102,7 +102,7 @@
         }
       }
     },
-    "bai8httpservice-e2e": {
+    "Bai2ngFor-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -111,11 +111,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "bai8httpservice:serve"
+            "devServerTarget": "Bai2ngFor:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "bai8httpservice:serve:production"
+              "devServerTarget": "Bai2ngFor:serve:production"
             }
           }
         },
@@ -131,5 +131,5 @@
       }
     }
   },
-  "defaultProject": "bai8httpservice"
+  "defaultProject": "Bai2ngFor"
 }
