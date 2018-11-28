@@ -7,7 +7,7 @@
   <button (click)="isShowDel=!isShowDel; isShow=!isShow">Xoa hoc vien</button>
 </div>
 <form (ngSubmit)="addHV(HocVienForm)" #HocVienForm="ngForm" *ngIf="isShowAdd">
-  <input placeholder="ten hoc vien" ngModel #txtTen="ngModel" name="tenHV" required />
+  <input placeholder="ten hoc vien" ngModel #txtTen="ngModel" name="ten" required />
   <span class="error" *ngIf="txtTen.touched && txtTen?.errors?.required">Yeu cau nhap!</span><br /><br />
   <input placeholder="gioi tinh" ngModel #txtGioiTinh="ngModel" name="gioiTinh" required />
   <span class="error" *ngIf="txtGioiTinh.touched && txtGioiTinh?.errors?.required">Yeu cau nhap!</span><br /><br />
@@ -24,11 +24,11 @@
 <div *ngFor="let objHocVien of arHocVien" id="hocvien">
   <div *ngIf="getShowStatus(objHocVien.gioiTinh)">
     <h4>Ma hoc vien: {{ objHocVien.id }}</h4>
-    <h3>Ho ten: <span *ngIf="!isShowEdit">{{ objHocVien.tenHV }}</span>
-      <input *ngIf="isShowEdit" placeholder="{{ objHocVien.tenHV }}" [(ngModel)]="newName" />
+    <h3>Ho ten: <span *ngIf="!isShowEdit">{{ objHocVien.ten }}</span>
+      <input *ngIf="isShowEdit" placeholder="{{ objHocVien.ten }}" [(ngModel)]="newName[objHocVien.id]" />
     </h3>
     <p>Gioi tinh: <span *ngIf="!isShowEdit">{{ objHocVien.gioiTinh?"Nam":"Nu" }}</span>
-      <input *ngIf="isShowEdit" placeholder="{{ objHocVien.gioiTinh?'Nam':'Nu' }}" [(ngModel)]="newGender" />
+      <input *ngIf="isShowEdit" placeholder="{{ objHocVien.gioiTinh?'Nam':'Nu' }}" [(ngModel)]="newGender[objHocVien.id]" />
     </p>
     <button (click)="deleteHV(objHocVien.id)" *ngIf="isShowDel">Xoa</button>
     <button (click)="editHV(objHocVien.id)" *ngIf="isShowEdit">Sua</button>
