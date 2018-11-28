@@ -20,15 +20,17 @@ export class HocVienComponent implements OnInit {
         });
       })
       .catch(err => console.log(err));
-    
+
   }
   isShow = true;
   isShowAdd = false;
   isShowDel = false;
   isShowEdit = false;
   filterStatus = "tat_ca";
-  newName=[];
-  newGender=[];
+  newName = [];
+  newGender = [];
+  soThichHoc = [];
+  soThichChoi = [];
   arHocVien = [];
 
   addHV(HocVienForm) {
@@ -39,7 +41,8 @@ export class HocVienComponent implements OnInit {
     } else {
       var ten = HocVienForm.value.ten;
       var gioiTinh = (strGioiTinh == "nam".toUpperCase());
-      var hocVien = { id, ten, gioiTinh }
+      var soThich = HocVienForm.value.soThich;
+      var hocVien = { id, ten, gioiTinh, soThich }
       this.arHocVien.unshift(hocVien);
       alert("Da them thanh cong!");
       this.isShowAdd = !this.isShowAdd;
@@ -62,10 +65,14 @@ export class HocVienComponent implements OnInit {
 
   editHV(id) {
     const index = this.arHocVien.findIndex(e => e.id == id);
-    this.arHocVien[index].gioiTinh = typeof (this.newGender) != "undefined" ?
+    this.arHocVien[index].gioiTinh = typeof (this.newGender[id]) != "undefined" ?
       (this.newGender[id] == "nam" || this.newGender[id] == "Nam") : this.arHocVien[index].gioiTinh;
     this.arHocVien[index].ten = typeof (this.newName[id]) != "undefined" ?
       this.newName[id] : this.arHocVien[index].ten;
+    this.arHocVien[index].soThich.hoc = typeof (this.soThichHoc[id]) != "undefined" ?
+      this.soThichHoc[id] : this.arHocVien[index].soThich.hoc;
+    this.arHocVien[index].soThich.choi = typeof (this.soThichChoi[id]) != "undefined" ?
+      this.soThichChoi[id] : this.arHocVien[index].soThich.choi;
     this.newName = []; this.newGender = [];
     alert("Da sua thanh cong!");
   }

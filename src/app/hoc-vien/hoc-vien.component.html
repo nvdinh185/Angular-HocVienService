@@ -11,6 +11,11 @@
   <span class="error" *ngIf="txtTen.touched && txtTen?.errors?.required">Yeu cau nhap!</span><br /><br />
   <input placeholder="gioi tinh" ngModel #txtGioiTinh="ngModel" name="gioiTinh" required />
   <span class="error" *ngIf="txtGioiTinh.touched && txtGioiTinh?.errors?.required">Yeu cau nhap!</span><br /><br />
+  <div ngModelGroup="soThich">
+    <span>So thich</span>
+    <label> Choi<input type="checkbox" [ngModel]="false" name="choi" /></label>
+    <label> Hoc<input type="checkbox" [ngModel]="false" name="hoc" /></label>
+  </div>
   <input [disabled]="HocVienForm.invalid" type="submit" value="Them" />
 </form>
 <h1>Thong tin hoc vien</h1>
@@ -30,6 +35,18 @@
     <p>Gioi tinh: <span *ngIf="!isShowEdit">{{ objHocVien.gioiTinh?"Nam":"Nu" }}</span>
       <input *ngIf="isShowEdit" placeholder="{{ objHocVien.gioiTinh?'Nam':'Nu' }}" [(ngModel)]="newGender[objHocVien.id]" />
     </p>
+    <div>
+      <p>So thich:
+        <span *ngIf="!isShowEdit">
+          <label>Choi<input type="checkbox" [ngModel]="objHocVien.soThich.choi" onclick="return false;" /></label>
+          <label>Hoc<input type="checkbox" [ngModel]="objHocVien.soThich.hoc" onclick="return false;" /></label>
+        </span>
+        <span *ngIf="isShowEdit">
+          <label>Choi<input type="checkbox" [ngModel]="objHocVien.soThich.choi" [(ngModel)]="soThichChoi[objHocVien.id]" /></label>
+          <label>Hoc<input type="checkbox" [ngModel]="objHocVien.soThich.hoc" [(ngModel)]="soThichHoc[objHocVien.id]" /></label>
+        </span>
+      </p>
+    </div>
     <button (click)="deleteHV(objHocVien.id)" *ngIf="isShowDel">Xoa</button>
     <button (click)="editHV(objHocVien.id)" *ngIf="isShowEdit">Sua</button>
   </div>
