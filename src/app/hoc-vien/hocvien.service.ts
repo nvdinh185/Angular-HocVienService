@@ -7,7 +7,7 @@ export class HocVienService{
     constructor(private http: Http){}
 
     getHocVien(){
-        const url = 'https://dinh-server-heroku.herokuapp.com/hocvien';
+        const url = 'https://dinh-server.herokuapp.com/hocvien';
         return this.http.get(url)
         .toPromise()
         .then(res => res.json())
